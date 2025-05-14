@@ -4,7 +4,7 @@ An alternative visualization for the results of FieldTrip cluster-based permutat
 ## Requires
 - FieldTrip toolbox, freely available under https://www.fieldtriptoolbox.org/download/
 - cbrewer2, freely available under https://de.mathworks.com/matlabcentral/fileexchange/58350-cbrewer2
-- sensor net layout (.sfp) of your EEG net
+- sensor net layout of your EEG net (e.g., .sfp-file); must be compatible with FieldTrip
 - output struct of cluster statistic from ft_freqstatistics in a .mat file
 
 
