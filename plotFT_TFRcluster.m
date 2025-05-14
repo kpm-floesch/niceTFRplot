@@ -50,7 +50,7 @@ clear inLoad
 plotcfg.negPosClust     = 'neg'; % plot negative or positive cluster; or 'pos'
 plotcfg.Tstat           = 'mean'; % plot mean cluster t-value; or 'sum'
 plotcfg.Tscale          = 3; % min/max absolute t-value on color scale; depends on chosen Tstat, e.g. 3 for 'mean' and 1000 for 'sum'
-plotcfg.ClusterNo       = [1 2]; % which cluster to plot; you can also choose multiple, e.g. [1 2]
+plotcfg.ClusterNo       = 1; % which cluster to plot; you can also choose multiple, e.g. [1 2]
 plotcfg.yscale          = 'lin'; % linear ('lin') or log ('log') scale of y axis
 plotcfg.highlightSize   = 28; % point size for highlighting significant cluster sensors
 
