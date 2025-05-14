@@ -11,3 +11,5 @@ An alternative visualization for the results of FieldTrip cluster-based permutat
 ## References
 - Lowe, S. (2025). cbrewer2 (https://github.com/scottclowe/cbrewer2), GitHub.
 - Oostenveld, R., Fries, P., Maris, E., Schoffelen, J.-M. (2011). FieldTrip: Open source software for advanced analysis of MEG, EEG, and invasive electrophysiological data. Computational Intelligence and Neuroscience, 2011, 156869, doi:10.1155/2011/156869.
+
+Please cite as: Flösch, K.-P. (2025). niceTFRplot (https://github.com/kpm-floesch/niceTFRplot), GitHub.
