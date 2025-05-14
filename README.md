@@ -1,7 +1,7 @@
 # niceTFRplot
 An alternative visualization for the results of FieldTrip cluster-based permutation analysis on time-frequency data. The code avoids opacity alpha masking by using custom color scales. Information about the cluster contribution of each individual sensor is outsourced to a 2D sensor net layout with 4 graded point sizes obtained by median splits.
 
-## Requires:
+## Requires
 - FieldTrip toolbox, freely available under https://www.fieldtriptoolbox.org/download/
 - smooth2a, freely available under https://de.mathworks.com/matlabcentral/fileexchange/23287-smooth2a 
 - cbrewer2, freely available under https://de.mathworks.com/matlabcentral/fileexchange/58350-cbrewer2
