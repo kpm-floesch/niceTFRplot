@@ -9,6 +9,6 @@ Requires:
 - output struct of cluster statistic from ft_freqstatistics in a .mat file
 
 References
-Lowe, S. (2025). cbrewer2 (https://github.com/scottclowe/cbrewer2), GitHub.
-Oostenveld, R., Fries, P., Maris, E., Schoffelen, J.-M. (2011). FieldTrip: Open source software for advanced analysis of MEG, EEG, and invasive electrophysiological data. Computational Intelligence and Neuroscience, 2011, 156869, doi:10.1155/2011/156869.
-Reeves, G. (2025). smooth2a (https://www.mathworks.com/matlabcentral/fileexchange/23287-smooth2a), MATLAB Central File Exchange.
+- Lowe, S. (2025). cbrewer2 (https://github.com/scottclowe/cbrewer2), GitHub.
+- Oostenveld, R., Fries, P., Maris, E., Schoffelen, J.-M. (2011). FieldTrip: Open source software for advanced analysis of MEG, EEG, and invasive electrophysiological data. Computational Intelligence and Neuroscience, 2011, 156869, doi:10.1155/2011/156869.
+- Reeves, G. (2025). smooth2a (https://www.mathworks.com/matlabcentral/fileexchange/23287-smooth2a), MATLAB Central File Exchange.
