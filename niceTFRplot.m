@@ -10,12 +10,15 @@
 % Requires:
 % - FieldTrip toolbox, freely available under https://www.fieldtriptoolbox.org/download/
 % - cbrewer2, freely available under https://de.mathworks.com/matlabcentral/fileexchange/58350-cbrewer2
-% - sensor net layout of your EEG net (e.g. .sfp-file); must be compatible with FieldTrip
+% - sensor net layout of your EEG net (e.g., .sfp-file); must be compatible with FieldTrip
 % - output struct of cluster statistic from ft_freqstatistics in a .mat file
 %
 % Please ensure that your cluster statistics structure is named 'stat'. 
 % If it has a different name, update it accordingly in the "load data" 
 % section below.
+%
+% Please indicate whether plotting negative (default) or positive clusters. Also note 
+% that many plotting preferences can be customized using the handles provided within the script. 
 %
 % References
 % Lowe, S. (2025). cbrewer2 (https://github.com/scottclowe/cbrewer2), GitHub.
@@ -29,10 +32,10 @@
 %% set defaults
 restoredefaultpath
 
-opts.ftPath       = 'PATH TO FIELDTRIP TOOLBOX';
-opts.cbrewer2Path = 'PATH TO cbrewer2 FOLDER';
-opts.netLayout    = 'PATH TO NET LAYOUT';
-opts.dataPath     = 'PATH TO CLUSTER DATA (.mat)';
+opts.ftPath       = 'FOLDER PATH TO FIELDTRIP TOOLBOX';
+opts.cbrewer2Path = 'FOLDER PATH TO cbrewer2';
+opts.netLayout    = 'FILE PATH TO NET LAYOUT';
+opts.dataPath     = 'FILE PATH TO CLUSTER DATA (.mat)';
 
 addpath(opts.cbrewer2Path)
 addpath(opts.ftPath)
@@ -47,8 +50,8 @@ clear inLoad
 
 %% PLEASE SET PLOTTING PARAMETERS
 
-plotcfg.negPosClust     = 'neg'; % plot negative or positive cluster; or 'pos'
-plotcfg.Tstat           = 'mean'; % plot mean cluster t-value; or 'sum'
+plotcfg.negPosClust     = 'neg'; % plot negative ('neg') or positive cluster ('pos')
+plotcfg.Tstat           = 'mean'; % plot mean ('mean) or summed ('sum') cluster t-value
 plotcfg.Tscale          = 3; % min/max absolute t-value on color scale; depends on chosen Tstat, e.g. 3 for 'mean' and 1000 for 'sum'
 plotcfg.ClusterNo       = 1; % which cluster to plot; you can also choose multiple, e.g. [1 2]
 plotcfg.yscale          = 'lin'; % linear ('lin') or log ('log') scale of y axis
@@ -57,7 +60,7 @@ plotcfg.highlightSize   = 28; % point size for highlighting significant cluster 
 % It is strongly recommended to always plot and interpret the whole
 % cluster, but you can also specify time and frequency ranges for
 % plotting.
-plotcfg.time            = []; % in seconds, e.g. [.5 1]
+plotcfg.time            = []; % in seconds, e.g. [.5 1.2]
 plotcfg.freq            = []; % in Hz, e.g. [8 20]
 
 %% PLOT
