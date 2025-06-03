@@ -2,10 +2,13 @@
 %
 % An alternative visualization for the results of FieldTrip cluster-based
 % permutation analysis on time-frequency data. The code avoids opacity alpha 
-% masking by using custom color scales. Information about the cluster
-% contribution of each individual sensor is outsourced to a 2D sensor net
-% layout with 4 graded point sizes obtained by median splits. You can
-% specify different plotting parameters below.
+% masking by using custom color scales, smoothed by a gaussian filter. 
+% Information about the cluster contribution of each individual sensor is 
+% outsourced to a 2D sensor net layout with 4 graded point sizes obtained 
+% by median splits.
+% Please indicate whether plotting negative (default) or positive clusters. 
+% Also note that many plotting preferences can be customized using the handles 
+% provided within the script. 
 %
 % Requires:
 % - FieldTrip toolbox, freely available under https://www.fieldtriptoolbox.org/download/
@@ -16,10 +19,7 @@
 % Please ensure that your cluster statistics structure is named 'stat'. 
 % If it has a different name, update it accordingly in the "load data" 
 % section below.
-%
-% Please indicate whether plotting negative (default) or positive clusters. Also note 
-% that many plotting preferences can be customized using the handles provided within the script. 
-%
+% 
 % References
 % Lowe, S. (2025). cbrewer2 (https://github.com/scottclowe/cbrewer2), GitHub.
 % Oostenveld, R., Fries, P., Maris, E., Schoffelen, J.-M. (2011). FieldTrip: Open source software for advanced analysis of MEG, EEG, and invasive electrophysiological data. Computational Intelligence and Neuroscience, 2011, 156869, doi:10.1155/2011/156869.
@@ -32,10 +32,17 @@
 %% set defaults
 restoredefaultpath
 
-opts.ftPath       = 'FOLDER PATH TO FIELDTRIP TOOLBOX';
-opts.cbrewer2Path = 'FOLDER PATH TO cbrewer2';
-opts.netLayout    = 'FILE PATH TO NET LAYOUT';
-opts.dataPath     = 'FILE PATH TO CLUSTER DATA (.mat)';
+% FOLDER PATH TO FIELDTRIP TOOLBOX
+opts.ftPath       = 'XXXXXX';
+
+% FOLDER PATH TO cbrewer2
+opts.cbrewer2Path = 'XXXXXX';
+
+% FILE PATH TO NET LAYOUT (must be compatible with FieldTrip)
+opts.netLayout    = 'XXXXXX';
+
+% FILE PATH TO CLUSTER DATA (.mat)
+opts.dataPath     = 'XXXXXX';
 
 addpath(opts.cbrewer2Path)
 addpath(opts.ftPath)
@@ -170,7 +177,7 @@ hc.Label.String = barlabel;
 
 % axes
 ax = gca;
-set(ax,'xcolor',hex2rgb('#262626'),'ycolor',hex2rgb('#262626'))
+set(ax,'xcolor',[.15 .15 .15],'ycolor',[.15 .15 .15])
 ax.LineWidth = 2;
 ax.FontSize = 30;
 ax.FontName = 'Helvetica';
@@ -181,8 +188,8 @@ ax.XLabel.Visible = 'on';
 
 if strcmp(plotcfg.yscale,'log'); yscale log; end
 
-xlh = xlabel ('Time (ms)','FontSize',30, 'FontWeight','bold','FontName','Helvetica','Color',hex2rgb('#262626'));
-ylh = ylabel('Frequency (Hz)','FontSize',30, 'FontWeight','bold','FontName','Helvetica','Color',hex2rgb('#262626'));
+xlh = xlabel ('Time (ms)','FontSize',30, 'FontWeight','bold','FontName','Helvetica','Color',[.15 .15 .15]);
+ylh = ylabel('Frequency (Hz)','FontSize',30, 'FontWeight','bold','FontName','Helvetica','Color',[.15 .15 .15]);
 
 title('Time x Frequency, aggregated over cluster sensors','FontSize',30)
 
@@ -203,6 +210,14 @@ stepstatChanLow1 = statChanLow1(ismember(statChanLow1,statChan));
 stepstatChanLow2 = statChanLow2(ismember(statChanLow2,statChan));
 stepstatChanHigh1 = statChanHigh1(ismember(statChanHigh1,statChan));
 stepstatChanHigh2 = statChanHigh2(ismember(statChanHigh2,statChan));
+
+if isempty(stepstatChanHigh1)
+    stepstatChanHigh1 = stepstatChanLow2; 
+end
+
+if isempty(stepstatChanHigh2) 
+    stepstatChanHigh2 = stepstatChanHigh1; 
+end
 
 % plot sensor contribution on sensor net layout
 nexttile(8)
